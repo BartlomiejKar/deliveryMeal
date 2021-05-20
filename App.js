@@ -6,7 +6,7 @@ export default function App() {
     <>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
-          <Text>First app in react native Bolek1906</Text>
+          <Text>First app in react native</Text>
           <Text>abcd</Text>
         </View>
       </SafeAreaView>
