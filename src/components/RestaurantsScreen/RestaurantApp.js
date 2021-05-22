@@ -1,37 +1,36 @@
 import React from 'react';
-
-import { SafeAreaView, View, StyleSheet, StatusBar, Text } from "react-native"
+import styled from "styled-components/native"
+import { SafeAreaView, View, StatusBar } from "react-native"
 import RestaurantListCard from '../RestaurantList/RestaurantListCard';
 
 import SearchBar from "../searchBar/SearchBar"
 
+const SafeAreaComponent = styled(SafeAreaView)
+    `
+flex: 1;
+background-color: #f8961e;
+margin-top: ${StatusBar.currentHeight};
+`
+
+const ViewList = styled(View)
+    `
+flex:1;
+background-color: white
+`
+
 const RestaurantApp = () => {
     return (
         <>
-            <SafeAreaView style={styles.safeArea}>
+            <SafeAreaComponent>
                 <SearchBar />
-                <View style={styles.container}>
+                <ViewList >
                     <RestaurantListCard />
-                </View>
-            </SafeAreaView>
+                </ViewList>
+            </SafeAreaComponent>
         </>
     );
 }
 
-const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-        backgroundColor: "black",
-        // status bar for android
-        marginTop: StatusBar.currentHeight
-    },
-    container: {
-        flex: 1,
-        fontWeight: "bold",
-        backgroundColor: "orange",
-    },
-
-});
 
 
 

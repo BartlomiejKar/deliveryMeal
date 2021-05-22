@@ -1,8 +1,15 @@
 import React from 'react';
+import styled from "styled-components/native"
 import { Card, Title } from "react-native-paper"
-import { StyleSheet } from "react-native"
 import burger from "../../../assets/burgers.jpg"
 
+
+const CardComponent = styled(Card)
+    `
+padding: 10px;
+border-radius: 5px;
+margin: 6px
+`;
 
 const RestaurantListCard = ({ Restaurant = {} }) => {
     const {
@@ -15,23 +22,17 @@ const RestaurantListCard = ({ Restaurant = {} }) => {
     } = Restaurant
 
     return (
-        <Card style={styles.card}>
+        <CardComponent>
             <Card.Cover source={photo} />
             <Card.Content>
                 <Title>{name}</Title>
             </Card.Content>
-        </Card>
+        </CardComponent>
     )
 }
 
 
-const styles = StyleSheet.create({
-    card: {
-        padding: 10,
-        borderRadius: 5,
-        margin: 6
-    }
-})
+
 
 
 export default RestaurantListCard;
