@@ -9,7 +9,7 @@ const SafeAreaComponent = styled(SafeAreaView)
     `
 flex: 1;
 background-color: #f8961e;
-margin-top: ${StatusBar.currentHeight};
+${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `
 
 const ViewList = styled(View)

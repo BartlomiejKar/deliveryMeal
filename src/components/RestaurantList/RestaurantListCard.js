@@ -8,9 +8,15 @@ const CardComponent = styled(Card)
     `
 padding: 10px;
 border-radius: 5px;
-margin: 6px
+margin: 6px;
+background-color: #f8f9fa;
 `;
+const TitleComponent = styled(Title)
+    `
+padding: 10px;
+margin: auto
 
+`;
 const RestaurantListCard = ({ Restaurant = {} }) => {
     const {
         name = "Some restaurant",
@@ -25,7 +31,7 @@ const RestaurantListCard = ({ Restaurant = {} }) => {
         <CardComponent>
             <Card.Cover source={photo} />
             <Card.Content>
-                <Title>{name}</Title>
+                <TitleComponent>{name}</TitleComponent>
             </Card.Content>
         </CardComponent>
     )
