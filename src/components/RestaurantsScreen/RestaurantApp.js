@@ -1,21 +1,17 @@
 import React from 'react';
 import styled from "styled-components/native"
-import { SafeAreaView, View, StatusBar } from "react-native"
+import { View, FlatList } from "react-native"
 import RestaurantListCard from '../RestaurantList/RestaurantListCard';
+import SafeAreaComponent from "../SafeArea/SafeArea"
 
 import SearchBar from "../searchBar/SearchBar"
 
-const SafeAreaComponent = styled(SafeAreaView)
-    `
-flex: 1;
-background-color: #f8961e;
-${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`
 
 const ViewList = styled(View)
     `
 flex:1;
-background-color: white
+background-color: white;
+padding:10px
 `
 
 const RestaurantApp = () => {
@@ -24,7 +20,26 @@ const RestaurantApp = () => {
             <SafeAreaComponent>
                 <SearchBar />
                 <ViewList >
-                    <RestaurantListCard />
+                    <FlatList
+                        data={[
+                            { name: 1 },
+                            { name: 2 },
+                            { name: 3 },
+                            { name: 4 },
+                            { name: 5 },
+                            { name: 6 },
+                            { name: 7 },
+                            { name: 8 },
+                            { name: 9 },
+                            { name: 10 },
+                            { name: 11 },
+                            { name: 12 },
+                            { name: 13 },
+                            { name: 14 },
+                        ]}
+                        renderItem={() => <RestaurantListCard />}
+                        keyExtractor={item => item.name}
+                    />
                 </ViewList>
             </SafeAreaComponent>
         </>
