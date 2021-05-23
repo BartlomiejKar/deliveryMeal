@@ -3,7 +3,8 @@ import styled from "styled-components/native";
 import { View, FlatList } from "react-native"
 import RestaurantListCard from '../RestaurantList/RestaurantListCard';
 import SafeAreaComponent from "../SafeArea/SafeArea";
-import { RestaurantContext } from "../../services/Restaurants/RestaurantContext"
+import { RestaurantContext } from "../../services/Restaurants/RestaurantContext";
+import Spinner from "../Spinner/Spinner"
 
 
 import SearchBar from "../searchBar/SearchBar"
@@ -18,12 +19,12 @@ padding:10px
 
 const RestaurantApp = () => {
     const { isLoading, error, restaurants } = useContext(RestaurantContext)
-
     return (
         <>
             <SafeAreaComponent>
                 <SearchBar />
                 <ViewList >
+                    {isLoading && (<Spinner />)}
                     <FlatList
                         data={restaurants}
                         renderItem={({ item }) => {
