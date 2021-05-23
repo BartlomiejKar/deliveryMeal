@@ -42,14 +42,15 @@ const Row = styled(View)
 display: flex;
 flex-direction: row;
 `;
-const RestaurantListCard = ({ Restaurant = {} }) => {
+const RestaurantListCard = ({ restaurant = {} }) => {
+    console.log(restaurant)
     const {
-        name = "Some restaurant",
+        name,
         icon,
-        photo = burger,
-        adress = "random 1100",
-        rating = 4,
-    } = Restaurant
+        photos,
+        adress,
+        rating = rating ? rating : 1,
+    } = restaurant
 
     const ratingStar = Array.from(new Array(Math.ceil(rating)))
     const mapRating = ratingStar.map(() => (
@@ -58,7 +59,7 @@ const RestaurantListCard = ({ Restaurant = {} }) => {
 
     return (
         <CardComponent key={name}>
-            <Card.Cover source={photo} />
+            <Card.Cover source={photos} />
             <Card.Content>
                 <Info>
                     <TitleComponent>{name}</TitleComponent>
