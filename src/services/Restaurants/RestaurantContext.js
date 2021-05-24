@@ -4,16 +4,24 @@ import { RestaurantService, ResultTransform } from "./RestaurantService";
 export const RestaurantContext = createContext()
 
 export const RestaurantContextProvider = ({ children }) => {
+    const [restaurantsNames, setRestaurantsNames] = useState([])
+    const [searchWords, setSearchWords] = useState("")
     const [restaurants, setRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const restaurantsMap = restaurants.map(el => {
+        const { name, vicinity, rating, photos, placeId } = el
+        return { name, vicinity, rating, photos, placeId }
+    })
+    console.log(restaurantsMap)
     const getRestaurant = () => {
         setIsLoading(true)
         setTimeout(() => {
             RestaurantService()
                 .then(ResultTransform)
                 .then((results) => {
+                    setIsLoading(false)
                     setRestaurants(results)
                 })
                 .catch(err => {
@@ -23,8 +31,20 @@ export const RestaurantContextProvider = ({ children }) => {
         }, 2000)
     }
 
+    const getRestaurantByName = (searchWords) => {
+        setSearchWords(searchWords);
+        const regex = new RegExp(searchWords, "gi");
+        const filterRestaurants = restaurantsMap.reduce((acc, restaurant) => {
+            if ((restaurant && restaurant.name.match(regex))) {
+                acc.push(restaurant)
+            }
+            return acc
+        }, [])
+        setRestaurantsNames(filterRestaurants)
+    }
+
     useEffect(() => {
-        getRestaurant()
+        getRestaurant();
     }, [])
 
     return (
@@ -33,6 +53,8 @@ export const RestaurantContextProvider = ({ children }) => {
                 restaurants,
                 isLoading,
                 error,
+                restaurantsNames,
+                restaurantByName: getRestaurantByName
             }}
         >{children}
         </RestaurantContext.Provider>

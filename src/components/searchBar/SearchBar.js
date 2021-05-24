@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from "styled-components/native"
 import fooddelivery from "../../../assets/fooddelivery.png"
-import { View, StyleSheet, Image } from "react-native"
+import { View, Image } from "react-native"
 import { Searchbar } from 'react-native-paper';
+import { LocationContext } from '../../services/Location/LocationContext';
+import { RestaurantContext } from "../../services/Restaurants/RestaurantContext"
+
 
 const SearchBarComponent = styled(Searchbar)
     `
@@ -23,9 +26,20 @@ height: 50px;
 border-radius: 5px;
 margin-right: 15;
 `;
+
+
+
 const SearchBar = () => {
+    const { isLoading, error, restaurantByName } = useContext(RestaurantContext)
+
     const [searchQuery, setSearchQuery] = useState("");
-    const onChangeSearch = query => setSearchQuery(query);
+    const onChangeSearch = query => {
+        setSearchQuery(query)
+        restaurantByName(searchQuery)
+
+    };
+
+
     return (
         <SearchContainer>
             <ImageComponent

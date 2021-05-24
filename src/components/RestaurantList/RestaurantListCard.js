@@ -43,18 +43,16 @@ display: flex;
 flex-direction: row;
 `;
 const RestaurantListCard = ({ restaurant = {} }) => {
-    console.log(restaurant)
     const {
         name,
-        icon,
         photos,
-        adress,
+        vicinity,
         rating = rating ? rating : 1,
+        placeId
     } = restaurant
-
     const ratingStar = Array.from(new Array(Math.ceil(rating)))
-    const mapRating = ratingStar.map(() => (
-        <Star style={{ width: 20, height: 20, margin: 1 }} source={star} />
+    const mapRating = ratingStar.map((_, i) => (
+        <Star key={`${placeId}+${i}`} style={{ width: 20, height: 20, margin: 1 }} source={star} />
     ))
 
     return (
@@ -66,7 +64,7 @@ const RestaurantListCard = ({ restaurant = {} }) => {
                     <Row>
                         {mapRating}
                     </Row>
-                    <Adress>{adress}</Adress>
+                    <Adress>{vicinity}</Adress>
                 </Info>
             </Card.Content>
         </CardComponent>
