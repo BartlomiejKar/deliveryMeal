@@ -14,7 +14,6 @@ export const RestaurantContextProvider = ({ children }) => {
         const { name, vicinity, rating, photos, placeId } = el
         return { name, vicinity, rating, photos, placeId }
     })
-    console.log(restaurantsMap)
     const getRestaurant = () => {
         setIsLoading(true)
         setTimeout(() => {
