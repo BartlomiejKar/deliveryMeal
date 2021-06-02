@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import fireabse from "./src/firebase"
+import AuthenticationContextProvider from "./src/components/authentication/authenticationContext"
 import { ThemeProvider } from 'styled-components';
 import { theme } from "./src/components/ThemeProvider/theme/index";
 import { useFonts as useOswald, Oswald_400Regular } from '@expo-google-fonts/oswald';
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { RestaurantContextProvider } from "./src/services/Restaurants/RestaurantContext";
 import { LocationContextProvider } from "./src/services/Location/LocationContext"
-import Navigation from "./src/components/Navigation/Navigation"
+import NavContainer from "./src/components/Navigation/NavContainer"
+
 
 
 
 
 export default function App() {
+
+
   let [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -22,13 +27,16 @@ export default function App() {
     return null
   }
 
+
   return (
     <ThemeProvider theme={theme} >
-      <LocationContextProvider>
-        <RestaurantContextProvider>
-          <Navigation />
-        </RestaurantContextProvider>
-      </LocationContextProvider>
+      <AuthenticationContextProvider>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <NavContainer />
+          </RestaurantContextProvider>
+        </LocationContextProvider>
+      </AuthenticationContextProvider>
     </ThemeProvider>
   );
 }
