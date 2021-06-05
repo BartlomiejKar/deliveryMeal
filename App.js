@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import fireabse from "./src/firebase"
+import React from 'react';
+
 import AuthenticationContextProvider from "./src/components/authentication/authenticationContext"
 import { ThemeProvider } from 'styled-components';
 import { theme } from "./src/components/ThemeProvider/theme/index";

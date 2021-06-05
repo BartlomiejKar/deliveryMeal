@@ -5,7 +5,8 @@ import "firebase/storage";
 
 
 
-var firebaseConfig = {
+
+const firebaseConfig = {
     apiKey: "AIzaSyAIOBx3rTtGTFHlIxejel5BT3eRhFvAD4M",
     authDomain: "mealsdelivery-7a7da.firebaseapp.com",
     projectId: "mealsdelivery-7a7da",

@@ -1,8 +1,11 @@
 
 import firebase from "../../firebase"
+// import firebase from "firebase/app"
 
-const LoginRequest = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
+
+export const LoginRequest = (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+    // firebase.auth().signInWithEmailAndPassword("user@o2.pl", "123456")
 }
 
-export default LoginRequest
+
