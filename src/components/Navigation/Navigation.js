@@ -1,18 +1,11 @@
 import React from 'react';
-import SafeAreaComponent from "../SafeArea/SafeArea";
-import { Text, } from "react-native";
+import Setting from "../SettingsComponent/Setting"
 import RestaurantNavigator from "./RestaurantNavigator";
 import MapScreen from "../MapScreen/MapScreen"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-const Setting = () => {
-    return (
-        <SafeAreaComponent>
-            <Text>Setting</Text>
-        </SafeAreaComponent>
-    )
-}
+
 
 
 const Navigation = () => {

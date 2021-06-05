@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { Text } from "react-native"
 import RestaurantApp from "../RestaurantsScreen/RestaurantApp"
 import RestaurantDetails from "./RestaurantDetails"
 

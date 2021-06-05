@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components/native";
 import { Card } from "react-native-paper"
-import burger from "../../../assets/burgers.jpg"
 import { Text, View, Image } from 'react-native';
 import star from "../../../assets/star.png"
 
