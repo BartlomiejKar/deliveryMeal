@@ -53,10 +53,9 @@ const RestaurantListCard = ({ restaurant = {} }) => {
     const mapRating = ratingStar.map((_, i) => (
         <Star key={`${placeId}+${i}`} style={{ width: 20, height: 20, margin: 1 }} source={star} />
     ))
-
     return (
         <CardComponent key={name}>
-            <Card.Cover source={photos} />
+            <Card.Cover source={{ uri: photos[0] }} />
             <Card.Content>
                 <Info>
                     <TitleComponent>{name}</TitleComponent>
