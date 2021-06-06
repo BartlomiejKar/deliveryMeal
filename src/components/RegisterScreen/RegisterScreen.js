@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native-paper';
 import styled from 'styled-components/native';
 import Image from "./ImageBackground"
-import Login from './Login';
+
 
 const LoginButton = styled(Button)
     `

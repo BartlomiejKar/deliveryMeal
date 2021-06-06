@@ -20,7 +20,7 @@ const Navigation = () => {
                         iconName = focused
                             ? 'ios-restaurant'
                             : 'ios-restaurant-outline';
-                    } else if (route.name === 'Settings') {
+                    } else if (route.name === 'User') {
                         iconName = focused ? 'ios-settings' : 'ios-settings-outline';
                     } else if (route.name === "Map") {
                         iconName = focused ? 'ios-map' : 'ios-map-outline';
@@ -35,7 +35,7 @@ const Navigation = () => {
         >
             <Tab.Screen name="Home" component={RestaurantNavigator} />
             <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Settings" component={Setting} />
+            <Tab.Screen name="User" component={Setting} />
         </Tab.Navigator>
     )
 }
