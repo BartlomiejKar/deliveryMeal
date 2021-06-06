@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { LoginRequest } from "./authentication"
+import { LoginRequest, RegisterRequest } from "./authentication"
 // import firebase from "../../firebase"
 
 export const AuthenticationContext = createContext();
@@ -8,16 +8,29 @@ const AuthenticationContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [user, setUser] = useState(null)
     const [error, setError] = useState(null)
-    console.log(user)
-    // useEffect(() => {
-    //     firebase.auth().signInWithEmailAndPassword("user@o2.pl", "123456").then(user => {
-    //         setUser(user)
-    //     })
-    // }, [])
+
+
     const onLogin = (email, password) => {
         setIsLoading(true)
-        // LoginRequest(email, password)
         LoginRequest(email, password)
+            .then((u) => {
+                console.log(u)
+                setUser(u)
+                setIsLoading(false)
+            }).catch((error) => {
+                console.log(error.toString())
+                setError(error.toString())
+                setIsLoading(false)
+            })
+    }
+
+    const onRegister = (email, password, repeatPassword) => {
+        if (password !== repeatPassword) {
+            setError("invalid password")
+            return
+        }
+        setIsLoading(true)
+        RegisterRequest(email, password, repeatPassword)
             .then((u) => {
                 console.log(u)
                 setUser(u)
@@ -36,7 +49,8 @@ const AuthenticationContextProvider = ({ children }) => {
                 user,
                 isLoading,
                 error,
-                onLogin
+                onLogin,
+                onRegister
             }}
         >
             { children}

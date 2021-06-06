@@ -19,7 +19,7 @@ const RegisterScreen = ({ navigation }) => {
             <LoginButton icon="login" mode="contained" color="black" onPress={() => navigation.navigate("Login")}>
                 Login
   </LoginButton>
-            <RegisterButton icon="account" mode="contained" onPress={() => console.log('Pressed')}>
+            <RegisterButton icon="account" mode="contained" onPress={() => navigation.navigate("RegisterUser")}>
                 Register
   </RegisterButton>
 

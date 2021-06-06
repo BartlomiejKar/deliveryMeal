@@ -9,3 +9,6 @@ export const LoginRequest = (email, password) => {
 }
 
 
+export const RegisterRequest = (email, password) => {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+}

@@ -33,14 +33,15 @@ margin-right: 20px;
 padding: 20px;
 background-color: ${colors.ui.error}
 `
-const Login = ({ navigation }) => {
-    const { onLogin, error } = useContext(AuthenticationContext)
+const Register = ({ navigation }) => {
+    const { onRegister, error } = useContext(AuthenticationContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+    const [repeatPassword, setRepeatPassword] = useState("")
     return (
         <Image>
             <View>
-                <Title>Login to app</Title>
+                <Title>Register User</Title>
             </View>
             <LoginContainer>
                 <TextInput
@@ -60,13 +61,22 @@ const Login = ({ navigation }) => {
                     autoCapitalize="none"
                     onChangeText={password => setPassword(password)}
                 />
+                <TextInput
+                    label="Repeat password"
+                    value={repeatPassword}
+                    mode="outlined"
+                    secureTextEntry
+                    textContentType="password"
+                    autoCapitalize="none"
+                    onChangeText={repeatPassword => setRepeatPassword(repeatPassword)}
+                />
             </LoginContainer>
             <ButtonsContainer>
                 <Button icon="exit-to-app" onPress={() => navigation.goBack()}>
                     Go back
   </Button>
-                <Button icon="arrow-right-circle-outline" onPress={() => onLogin(email, password)}>
-                    Login
+                <Button icon="account" onPress={() => onRegister(email, password, repeatPassword)}>
+                    Register
   </Button>
 
             </ButtonsContainer>
@@ -80,4 +90,5 @@ const Login = ({ navigation }) => {
     )
 }
 
-export default Login
+
+export default Register
