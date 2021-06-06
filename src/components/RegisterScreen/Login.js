@@ -5,6 +5,7 @@ import { Button } from "react-native-paper"
 import Image from "../RegisterScreen/ImageBackground"
 import styled from "styled-components/native"
 import { AuthenticationContext } from '../authentication/authenticationContext';
+import { colors } from "../ThemeProvider/theme/colors"
 
 
 const LoginContainer = styled(View)
@@ -23,12 +24,20 @@ display:flex;
 flex-direction:row;
 justify-content: space-between
 `
-
+const ErrorContainer = styled(View)
+    `
+border: 1px solid;
+margin-top: 20px;
+margin-left: 20px;
+margin-right: 20px;
+padding: 20px;
+background-color: ${colors.ui.error}
+`
 const Login = ({ navigation }) => {
     const { onLogin, isLoading, error } = useContext(AuthenticationContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
-    // console.log(error)
+    console.log(error)
     return (
         <Image>
             <View>
@@ -63,9 +72,9 @@ const Login = ({ navigation }) => {
             </ButtonsContainer>
 
             {error && (
-                <View>
-                    <Text>error</Text>
-                </View>
+                <ErrorContainer>
+                    <Text style={{ fontSize: 20 }}>{error}</Text>
+                </ErrorContainer>
             )}
         </Image>
     )
