@@ -3,7 +3,6 @@ import styled from "styled-components/native"
 import fooddelivery from "../../../assets/fooddelivery.png"
 import { View, Image } from "react-native"
 import { Searchbar } from 'react-native-paper';
-import { LocationContext } from '../../services/Location/LocationContext';
 import { RestaurantContext } from "../../services/Restaurants/RestaurantContext"
 
 
@@ -30,7 +29,7 @@ margin-right: 15;
 
 
 const SearchBar = () => {
-    const { isLoading, error, restaurantByName } = useContext(RestaurantContext)
+    const { restaurantByName } = useContext(RestaurantContext)
 
     const [searchQuery, setSearchQuery] = useState("");
     const onChangeSearch = query => {

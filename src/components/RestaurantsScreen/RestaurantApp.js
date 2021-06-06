@@ -18,7 +18,7 @@ padding:10px
 `
 
 const RestaurantApp = ({ navigation }) => {
-    const { isLoading, error, restaurants, restaurantsNames } = useContext(RestaurantContext)
+    const { isLoading, restaurants, restaurantsNames } = useContext(RestaurantContext)
     return (
         <>
             <SafeAreaComponent>

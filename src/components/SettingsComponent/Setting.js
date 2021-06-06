@@ -21,7 +21,6 @@ const AvatarWrapper = styled(View)
 `
 const Setting = () => {
     const { onLogout, user } = useContext(AuthenticationContext)
-    console.log(user.email)
     return (
         <SafeAreaComponent>
             <SettingWrapper>
